@@ -16,11 +16,24 @@
 
 
 @endif
-
+<!-- 
 <a href="{{url('contactos/create')}}" class="btn btn-primary">Agregar contacto</a>
 </br></br>
-<table class="table table-light table-hover">
 
+
+ -->
+
+<div class="container">
+    <nav class="navbar navbar-light bg-light float-right">
+    <form class="form-inline">
+        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="ingrese nombre" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+    </nav>
+    <a href="{{url('contactos/create')}}" class="btn btn-primary">Agregar contacto</a>
+</br></br>
+</div>
+<table class="table table-light table-hover">
     <thead class="thead-light">
     <tr>
         <th>#</th>

@@ -17,10 +17,13 @@ class ContactosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        $datos['contactos']=contactos::paginate(8);
+        $parametro= $request->get('buscarpor');
+        $datos['contactos']=contactos::where('apellidos','like',"%$parametro%")->paginate(5);
+
+        //$datos['contactos']=contactos::paginate(8);
         return view('contactos.index',$datos);
     }
 
@@ -42,20 +45,6 @@ class ContactosController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-//-001------------------------------agregado para clñoudinary
-    public function uploadImages(Request $request)
-    {
-        $this->validate($request,[
-            'image_name'=>'required|mimes:jpeg,bmp,jpg,png|between:1, 6000',
-        ]);
-
-        $image_name = $request->file('Foto')->getRealPath();;
-
-        Cloudder::upload($image_name, null);
-
-        return redirect()->back()->with('status', 'Image Uploaded Successfully');
-
-    }
 
 //--001---------------------------------------------------------
 
